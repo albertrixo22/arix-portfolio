@@ -7,7 +7,7 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;700&display=swap" rel="stylesheet">
 
     <style>
         * {
@@ -292,7 +292,7 @@
             border: 1px solid var(--btn-border);
             padding: 0.75rem 1.5rem;
             cursor: pointer;
-            align-self: flex-start;
+            align-start: flex-start;
             transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
         }
 
@@ -588,7 +588,7 @@
             
             .image-container { aspect-ratio: 1 / 1; padding: 1rem; }
         }
-   </style>
+    </style>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
@@ -620,6 +620,25 @@
     </nav>
 
     <main class="portfolio-container">
+
+        <div class="project-row" data-category="freelance" data-project="nest">
+            <div class="image-container">
+                <img src="NEST.jpg" alt="NEST Brand Identity">
+            </div>
+            <div class="project-content">
+                <div class="project-meta">
+                    <div class="title-wrapper">
+                        <span class="project-title">NEST Property Group</span>
+                        <span class="status-badge">In Progress</span>
+                    </div>
+                    <span class="project-category">Branding</span>
+                </div>
+                <p class="project-description">
+                    Refining an organic legacy identity into a structural geometric framework. Optimized for absolute legibility across commercial vehicle wraps, high-visibility application assets, and corporate document architectures.
+                </p>
+                <button class="view-case-study">Open Project</button>
+            </div>
+        </div>
 
         <div class="project-row" data-category="university" data-project="turf">
             <div class="image-container">
@@ -657,20 +676,19 @@
             </div>
         </div>
 
-        <div class="project-row" data-category="freelance" data-project="nest">
+        <div class="project-row" data-category="university" data-project="beer">
             <div class="image-container">
-                <img src="NEST.jpg" alt="NEST Brand Identity">
+                <img src="Beer.png" alt="Beer Campaign">
             </div>
             <div class="project-content">
                 <div class="project-meta">
                     <div class="title-wrapper">
-                        <span class="project-title">NEST Property Group</span>
-                        <span class="status-badge">In Progress</span>
+                        <span class="project-title">Beer Culture</span>
                     </div>
-                    <span class="project-category">Branding</span>
+                    <span class="project-category">Campaign</span>
                 </div>
                 <p class="project-description">
-                    Refining an organic legacy identity into a structural geometric framework. Optimized for absolute legibility across commercial vehicle wraps, high-visibility application assets, and corporate document architectures.
+                    A promotional layout strategy. Bringing traditional pub styling into a physical leaflet to create a striking piece of material that creates understanding of beer culture.
                 </p>
                 <button class="view-case-study">Open Project</button>
             </div>
@@ -689,24 +707,6 @@
                 </div>
                 <p class="project-description">
                     A modern editorial digital environment concept. Utilizing dynamic screen layouts, stark typographic hierarchies, and interactive viewport components to showcase luxury architecture and interior systems.
-                </p>
-                <button class="view-case-study">Open Project</button>
-            </div>
-        </div>
-
-        <div class="project-row" data-category="university" data-project="beer">
-            <div class="image-container">
-                <img src="Beer.png" alt="Beer Campaign">
-            </div>
-            <div class="project-content">
-                <div class="project-meta">
-                    <div class="title-wrapper">
-                        <span class="project-title">Beer Culture</span>
-                    </div>
-                    <span class="project-category">Campaign</span>
-                </div>
-                <p class="project-description">
-                    A promotional layout strategy. Bringing traditional pub styling into a physical leaflet to create a striking piece of material that creates understanding of beer culture.
                 </p>
                 <button class="view-case-study">Open Project</button>
             </div>
@@ -747,7 +747,7 @@
                 <button class="view-case-study">Open Project</button>
             </div>
         </div>
-        
+
     </main>
 
     <div class="case-study-overlay" id="case-study-overlay">
@@ -875,6 +875,16 @@
         });
 
         const projectTemplates = {
+            nest: {
+                title: "NEST Property Group",
+                category: "Branding",
+                client: "NEST Property Group",
+                role: "Corporate Identity",
+                date: "In Progress",
+                imgSrc: "NEST.jpg",
+                description: "Refining an organic legacy identity into a structural geometric framework. Optimized for absolute legibility across commercial vehicle wraps, high-visibility application assets, and corporate document architectures.",
+                process: "The execution began with a rigorous geometric deconstruction of the client's legacy mark. The primary objective was to strip away organic complexity and structural redundancies, replacing them with a high-contrast typographic and vector framework optimized for large-scale physical application. Every angle and line weight of the new bird-nest emblem was engineered on a strict grid to guarantee dynamic scalability."
+            },
             turf: {
                 title: "T.U.R.F",
                 category: "Campaign",
@@ -895,15 +905,15 @@
                 description: "A weather-based social media application for Android (adaptable for other operating systems). Transitioning complex database interactions into a minimal mobile interface that utilizes minimalistic screen elements to catch and direct a viewer's eye.",
                 process: "The idea for this app actually stemmed from my younger brother who had the idea of an app used amongst friend groups to depict what they thought the weather was like and to give friends an idea of what to expect when they stepped foot out of their doors. This project was extremely experimental yet very fun. I had back and forth conversations about how this app should look with my brother over a couple of months."
             },
-            nest: {
-                title: "NEST Property Group",
-                category: "Branding",
-                client: "NEST Property Group",
-                role: "Corporate Identity",
-                date: "In Progress",
-                imgSrc: "NEST.jpg",
-                description: "Refining an organic legacy identity into a structural geometric framework. Optimized for absolute legibility across commercial vehicle wraps, high-visibility application assets, and corporate document architectures.",
-                process: "The execution began with a rigorous geometric deconstruction of the client's legacy mark. The primary objective was to strip away organic complexity and structural redundancies, replacing them with a high-contrast typographic and vector framework optimized for large-scale physical application. Every angle and line weight of the new bird-nest emblem was engineered on a strict grid to guarantee dynamic scalability."
+            beer: {
+                title: "Beer Culture",
+                category: "Campaign",
+                client: "University Module",
+                role: "Layout Design",
+                date: "2026",
+                imgSrc: "Beer.png",
+                description: "A promotional layout strategy. Bringing traditional pub styling into a physical leaflet to create a striking piece of material that creates understanding of beer culture.",
+                process: "To pull this design together, I decided to create my own patterns in the style of designers such as William Morris. After this, I researched text layout and structure and the best possible way of creating a design that resembles community. Pairing this with my design language I was able to create an easily distributable leaflet that accurately hit all of my criteria."
             },
             strata: {
                 title: "Strata",
@@ -914,16 +924,6 @@
                 imgSrc: "Strata.png",
                 description: "A modern editorial digital environment concept. Utilizing dynamic screen layouts, stark typographic hierarchies, and interactive viewport components to showcase luxury architecture and interior systems.",
                 process: "The digital execution utilized a rigid responsive viewport system to treat the web browser like an elite print layout asset. Typographic scale parameters were set up using custom fluid CSS mechanics, allowing severe editorial headers to dynamically adapt across variable hardware monitors without losing structural grid alignment. The spatial environment layout sets a heavy emphasis on asymmetrical margins and brutalist structural borders, balancing full-bleed architectural presentation mockups with technical copy blocks to create a luxury gallery mood system that behaves flawlessly under modern web animation engines."
-            },
-            beer: {
-                title: "Beer Culture",
-                category: "Campaign",
-                client: "University Module",
-                role: "Layout Design",
-                date: "2026",
-                imgSrc: "Beer.png",
-                description: "A promotional layout strategy. Bringing traditional pub styling into a physical leaflet to create a striking piece of material that creates understanding of beer culture.",
-                process: "To pull this design together, I decided to create my own patterns in the style of designers such as William Morris. After this, I researched text layout and structure and the best possible way of creating a design that resembles community. Pairing this with my design language I was able to create an easily distributable leaflet that accurately hit all of my criteria."
             },
             johnlewis: {
                 title: "John Lewis",
