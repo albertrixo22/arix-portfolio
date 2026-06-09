@@ -49,6 +49,7 @@
             font-weight: 300;
         }
 
+    
         .intro-section {
             max-width: 1200px;
             margin: 0 auto 5rem auto;
@@ -390,6 +391,7 @@
 
         filterButtons.forEach(btn => {
             btn.addEventListener('click', () => {
+               
                 filterButtons.forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
 
@@ -424,19 +426,6 @@
                     }
                 });
             });
-        });
-
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                let scrollSpeed = 1; 
-                function autoScroll() {
-                    window.scrollBy(0, scrollSpeed);
-                    if ((window.innerHeight + window.scrollY) < document.body.offsetHeight) {
-                        requestAnimationFrame(autoScroll);
-                    }
-                }
-                autoScroll();
-            }, 2500);
         });
     </script>
 </body>
