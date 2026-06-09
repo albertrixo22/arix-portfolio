@@ -17,26 +17,58 @@
             font-family: 'Plus Jakarta Sans', sans-serif;
         }
 
+        :root {
+            --bg-color: #000000;
+            --text-color: #ffffff;
+            --border-color: #111111;
+            --meta-color: #888888;
+            --sub-color: #666666;
+            --card-bg: #0a0a0a;
+            --selection-bg: #ffffff;
+            --selection-text: #000000;
+            --btn-border: #222222;
+        }
+
+        [data-theme="light"] {
+            --bg-color: #ffffff;
+            --text-color: #000000;
+            --border-color: #e5e5e5;
+            --meta-color: #555555;
+            --sub-color: #777777;
+            --card-bg: #f9f9f9;
+            --selection-bg: #000000;
+            --selection-text: #ffffff;
+            --btn-border: #cccccc;
+        }
+
         ::selection {
-            background-color: #ffffff;
-            color: #000000;
+            background-color: var(--selection-bg);
+            color: var(--selection-text);
         }
 
         body {
-            background-color: #000000;
-            color: #ffffff;
+            background-color: var(--bg-color);
+            color: var(--text-color);
             overflow-x: hidden;
             padding: 4rem 2rem;
+            transition: background-color 0.4s ease, color 0.4s ease;
         }
 
         header {
             max-width: 1200px;
             margin: 0 auto 2rem auto; 
             display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: flex-start;
             opacity: 0; 
             transform: translateY(20px);
+        }
+
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
         }
 
         h1 {
@@ -48,10 +80,26 @@
 
         p.bio {
             font-size: 1rem;
-            color: #888888;
+            color: var(--meta-color);
             max-width: 500px;
             line-height: 1.5;
             font-weight: 300;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: 1px solid var(--btn-border);
+            color: var(--text-color);
+            padding: 0.5rem 1rem;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            cursor: pointer;
+            transition: border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            border-color: var(--text-color);
         }
 
         .intro-section {
@@ -60,31 +108,32 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 4rem;
-            border-top: 1px solid #111111;
+            border-top: 1px solid var(--border-color);
             padding-top: 2.5rem;
             opacity: 0;
             transform: translateY(20px);
+            transition: border-color 0.4s ease;
         }
 
         .intro-column h2 {
             font-size: 1.1rem;
             text-transform: uppercase;
             letter-spacing: 0.08em;
-            color: #ffffff;
+            color: var(--text-color);
             margin-bottom: 1rem;
             font-weight: 700;
         }
 
         .intro-column p {
             font-size: 0.95rem;
-            color: #666666;
+            color: var(--sub-color);
             line-height: 1.6;
             font-weight: 300;
             max-width: 480px;
         }
 
         .intro-column p.tech-statement {
-            color: #888888;
+            color: var(--meta-color);
         }
 
         .category-nav {
@@ -92,16 +141,17 @@
             margin: 0 auto 6rem auto;
             display: flex;
             gap: 2.5rem;
-            border-bottom: 1px solid #111111;
+            border-bottom: 1px solid var(--border-color);
             padding-bottom: 1.2rem;
             opacity: 0;
             transform: translateY(15px);
+            transition: border-color 0.4s ease;
         }
 
         .filter-btn {
             background: none;
             border: none;
-            color: #444444;
+            color: var(--sub-color);
             font-size: 0.85rem;
             font-weight: 400;
             cursor: pointer;
@@ -112,11 +162,11 @@
         }
 
         .filter-btn:hover {
-            color: #ffffff;
+            color: var(--text-color);
         }
 
         .filter-btn.active {
-            color: #ffffff;
+            color: var(--text-color);
             font-weight: 700;
         }
 
@@ -155,11 +205,11 @@
             width: 100%;
             aspect-ratio: 4 / 3; 
             overflow: hidden;
-            background-color: #0a0a0a;
-            border: 1px solid #111111;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
             padding: 1.5rem;
             cursor: pointer;
-            transition: border-color 0.4s ease;
+            transition: border-color 0.4s ease, background-color 0.4s ease;
         }
 
         .image-container img {
@@ -167,17 +217,17 @@
             height: 100%;
             object-fit: cover;
             filter: grayscale(100%); 
-            transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1); 
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), filter 0.6s cubic-bezier(0.25, 1, 0.5, 1); 
             border-radius: 8px;
         }
 
         .image-container:hover {
-            border-color: #333333;
+            border-color: var(--btn-border);
         }
 
         .image-container:hover img {
             transform: scale(1.03);
-            filter: grayscale(0%) !important;
+            filter: grayscale(0%);
         }
 
         .project-content {
@@ -190,10 +240,11 @@
             display: flex;
             justify-content: space-between;
             align-items: baseline;
-            border-bottom: 1px solid #161616;
+            border-bottom: 1px solid var(--border-color);
             padding-bottom: 1rem;
             margin-bottom: 1.5rem;
             position: relative;
+            transition: border-color 0.4s ease;
         }
 
         .title-wrapper {
@@ -223,14 +274,14 @@
 
         .project-category {
             font-size: 0.85rem;
-            color: #666666;
+            color: var(--sub-color);
             text-transform: uppercase;
             letter-spacing: 0.05em;
         }
 
         .project-description {
             font-size: 0.95rem;
-            color: #888888;
+            color: var(--meta-color);
             line-height: 1.6;
             font-weight: 300;
             margin-bottom: 1.5rem;
@@ -240,22 +291,22 @@
             font-size: 0.85rem;
             text-transform: uppercase;
             letter-spacing: 0.08em;
-            color: #ffffff;
+            color: var(--text-color);
             background: transparent;
-            border: 1px solid #222222;
+            border: 1px solid var(--btn-border);
             padding: 0.75rem 1.5rem;
             cursor: pointer;
             align-self: flex-start;
-            transition: background-color 0.3s ease, border-color 0.3s ease;
+            transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
         }
 
         .project-row:hover .view-case-study {
-            border-color: #ffffff;
+            border-color: var(--text-color);
         }
 
         .view-case-study:hover {
-            background-color: #ffffff;
-            color: #000000;
+            background-color: var(--text-color);
+            color: var(--bg-color);
         }
 
         .case-study-overlay {
@@ -264,11 +315,12 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            background-color: #000000;
+            background-color: var(--bg-color);
             z-index: 1000;
             display: none;
             overflow-y: auto;
             padding: 6rem 2rem;
+            transition: background-color 0.4s ease;
         }
 
         .case-study-content {
@@ -285,7 +337,7 @@
             right: 2rem;
             background: transparent;
             border: none;
-            color: #666666;
+            color: var(--sub-color);
             font-size: 0.85rem;
             text-transform: uppercase;
             letter-spacing: 0.08em;
@@ -295,14 +347,14 @@
         }
 
         .close-btn:hover {
-            color: #ffffff;
+            color: var(--text-color);
         }
 
         .cs-header h4 {
             font-size: 0.85rem;
             text-transform: uppercase;
             letter-spacing: 0.08em;
-            color: #666666;
+            color: var(--sub-color);
             margin-bottom: 0.5rem;
         }
 
@@ -317,9 +369,10 @@
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
-            border-top: 1px solid #111111;
-            border-bottom: 1px solid #111111;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
             padding: 2rem 0;
+            transition: border-color 0.4s ease;
         }
 
         .cs-meta-item span {
@@ -327,13 +380,13 @@
             font-size: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 0.05em;
-            color: #444444;
+            color: var(--sub-color);
             margin-bottom: 0.5rem;
         }
 
         .cs-meta-item p {
             font-size: 1rem;
-            color: #ffffff;
+            color: var(--text-color);
             font-weight: 300;
         }
 
@@ -353,13 +406,14 @@
             font-size: 1.2rem;
             text-transform: uppercase;
             letter-spacing: 0.08em;
-            border-bottom: 1px solid #111111;
+            border-bottom: 1px solid var(--border-color);
             padding-bottom: 0.5rem;
+            transition: border-color 0.4s ease;
         }
 
         .cs-section p {
             font-size: 1.05rem;
-            color: #aaaaaa;
+            color: var(--meta-color);
             line-height: 1.7;
             font-weight: 300;
             max-width: 700px;
@@ -369,21 +423,23 @@
             width: 100%;
             max-height: 600px;
             object-fit: contain;
-            background-color: #050505;
-            border: 1px solid #111111;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
             border-radius: 8px;
+            transition: border-color 0.4s ease, background-color 0.4s ease;
         }
 
         footer {
             max-width: 1200px;
             margin: 12rem auto 4rem auto;
-            border-top: 1px solid #111111;
+            border-top: 1px solid var(--border-color);
             padding-top: 4rem;
             display: flex;
             flex-direction: column;
             gap: 4rem;
             opacity: 0;
             transform: translateY(20px);
+            transition: border-color 0.4s ease;
         }
 
         .footer-grid {
@@ -402,7 +458,7 @@
 
         .footer-cta p {
             font-size: 0.95rem;
-            color: #666666;
+            color: var(--sub-color);
             line-height: 1.5;
             font-weight: 300;
             margin-bottom: 1.5rem;
@@ -410,16 +466,16 @@
 
         .footer-cta a {
             font-size: 1rem;
-            color: #ffffff;
+            color: var(--text-color);
             text-decoration: none;
             font-weight: 400;
-            border-bottom: 1px solid #333333;
+            border-bottom: 1px solid var(--btn-border);
             padding-bottom: 0.2rem;
-            transition: border-color 0.3s ease;
+            transition: border-color 0.3s ease, color 0.3s ease;
         }
 
         .footer-cta a:hover {
-            border-color: #ffffff;
+            border-color: var(--text-color);
         }
 
         .enquiry-form {
@@ -443,23 +499,23 @@
         .enquiry-form textarea {
             background-color: transparent;
             border: none;
-            border-bottom: 1px solid #222222;
-            color: #ffffff;
+            border-bottom: 1px solid var(--btn-border);
+            color: var(--text-color);
             padding: 0.8rem 0;
             font-size: 0.95rem;
             font-weight: 300;
             outline: none;
-            transition: border-color 0.4s ease;
+            transition: border-color 0.4s ease, color 0.4s ease;
         }
 
         .enquiry-form input::placeholder, 
         .enquiry-form textarea::placeholder {
-            color: #444444;
+            color: var(--sub-color);
         }
 
         .enquiry-form input:focus, 
         .enquiry-form textarea:focus {
-            border-color: #ffffff;
+            border-color: var(--text-color);
         }
 
         .enquiry-form textarea {
@@ -469,8 +525,8 @@
 
         .submit-btn {
             align-self: flex-start;
-            background-color: #ffffff;
-            color: #000000;
+            background-color: var(--text-color);
+            color: var(--bg-color);
             border: none;
             padding: 1rem 2.5rem;
             font-size: 0.85rem;
@@ -478,7 +534,7 @@
             text-transform: uppercase;
             letter-spacing: 0.08em;
             cursor: pointer;
-            transition: opacity 0.3s ease;
+            transition: opacity 0.3s ease, background-color 0.4s ease, color 0.4s ease;
         }
 
         .submit-btn:hover {
@@ -489,19 +545,20 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-top: 1px solid #111111;
+            border-top: 1px solid var(--border-color);
             padding-top: 1.5rem;
+            transition: border-color 0.4s ease;
         }
 
         .footer-bottom p {
             font-size: 0.85rem;
-            color: #444444;
+            color: var(--sub-color);
             font-weight: 300;
         }
 
         @media (max-width: 900px) {
             body { padding: 2rem 1rem; }
-            header { margin-bottom: 3rem; }
+            header { margin-bottom: 3rem; flex-direction: column; gap: 1.5rem; }
             .intro-section { grid-template-columns: 1fr; gap: 2rem; margin-bottom: 4rem; }
             .category-nav { margin-bottom: 4rem; gap: 1.5rem; overflow-x: auto; padding-bottom: 0.8rem; }
             .portfolio-container { gap: 5rem; }
@@ -530,8 +587,11 @@
 <body>
 
     <header id="portfolio-header">
-        <h1>arix.psd</h1>
-        <p class="bio">Albert Richardson &mdash; Specialising in Experimental Typography and Illustration. BA Hons Level 5 Graphic Design at LAU.</p>
+        <div class="header-content">
+            <h1>arix.psd</h1>
+            <p class="bio">Albert Richardson &mdash; Specialising in Experimental Typography and Illustration. BA Hons Level 5 Graphic Design at LAU.</p>
+        </div>
+        <button class="theme-toggle" id="theme-toggle">Light Mode</button>
     </header>
 
     <section class="intro-section" id="portfolio-intro">
@@ -717,35 +777,18 @@
                     }
                     visibleIndex++;
 
-                    let targetImg = row.querySelector(".image-container img");
-
-                    gsap.fromTo(row, 
-                        { opacity: 0, y: 30, scale: 0.98 },
-                        {
-                            opacity: 1,
-                            y: 0,
-                            scale: 1,
-                            duration: 1.2,
-                            ease: "power3.out",
-                            scrollTrigger: {
-                                trigger: row,
-                                start: "top 85%", 
-                                toggleActions: "play none none none"
-                            }
+                    gsap.to(row, {
+                        opacity: 1,
+                        y: 0,
+                        scale: 1,
+                        duration: 1.2,
+                        ease: "power3.out",
+                        scrollTrigger: {
+                            trigger: row,
+                            start: "top 85%", 
+                            toggleActions: "play none none none"
                         }
-                    );
-
-                    if (targetImg) {
-                        gsap.to(targetImg, {
-                            filter: "grayscale(0%)",
-                            scrollTrigger: {
-                                trigger: row,
-                                start: "top 60%",
-                                end: "bottom 40%",
-                                toggleActions: "play reverse play reverse"
-                            }
-                        });
-                    }
+                    });
                 }
             });
         }
@@ -872,39 +915,41 @@
         const closeBtn = document.getElementById('close-case-study');
 
         document.querySelectorAll('.project-row').forEach(row => {
-            row.addEventListener('click', () => {
-                const projectId = row.getAttribute('data-project');
-                const data = projectTemplates[projectId];
-                
-                if (data) {
-                    dynamicContent.innerHTML = `
-                        <div class="cs-header">
-                            <h4>${data.category}</h4>
-                            <h2>${data.title}</h2>
-                        </div>
-                        <div class="cs-meta-grid">
-                            <div class="cs-meta-item"><span>Client / context</span><p>${data.client}</p></div>
-                            <div class="cs-meta-item"><span>Role / discipline</span><p>${data.role}</p></div>
-                            <div class="cs-meta-item"><span>Timeline</span><p>${data.date}</p></div>
-                        </div>
-                        <div class="cs-body">
-                            <img src="${data.imgSrc}" alt="${data.title} Main Artwork" class="cs-main-image">
-                            <div class="cs-section">
-                                <h3>Overview</h3>
-                                <p>${data.description}</p>
-                            </div>
-                            <div class="cs-section">
-                                <h3>Process & execution</h3>
-                                <p>${data.process}</p>
-                            </div>
-                        </div>
-                    `;
+            row.addEventListener('click', (e) => {
+                if (e.target.classList.contains('view-case-study') || e.target.closest('.image-container')) {
+                    const projectId = row.getAttribute('data-project');
+                    const data = projectTemplates[projectId];
                     
-                    document.body.style.overflow = 'hidden';
-                    overlay.style.display = 'block';
-                    
-                    gsap.fromTo(overlay, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.out" });
-                    gsap.fromTo(".case-study-content", { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, delay: 0.2, ease: "power3.out" });
+                    if (data) {
+                        dynamicContent.innerHTML = `
+                            <div class="cs-header">
+                                <h4>${data.category}</h4>
+                                <h2>${data.title}</h2>
+                            </div>
+                            <div class="cs-meta-grid">
+                                <div class="cs-meta-item"><span>Client / context</span><p>${data.client}</p></div>
+                                <div class="cs-meta-item"><span>Role / discipline</span><p>${data.role}</p></div>
+                                <div class="cs-meta-item"><span>Timeline</span><p>${data.date}</p></div>
+                            </div>
+                            <div class="cs-body">
+                                <img src="${data.imgSrc}" alt="${data.title} Main Artwork" class="cs-main-image">
+                                <div class="cs-section">
+                                    <h3>Overview</h3>
+                                    <p>${data.description}</p>
+                                </div>
+                                <div class="cs-section">
+                                    <h3>Process & execution</h3>
+                                    <p>${data.process}</p>
+                                </div>
+                            </div>
+                        `;
+                        
+                        document.body.style.overflow = 'hidden';
+                        overlay.style.display = 'block';
+                        
+                        gsap.fromTo(overlay, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.out" });
+                        gsap.fromTo(".case-study-content", { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, delay: 0.2, ease: "power3.out" });
+                    }
                 }
             });
         });
@@ -919,6 +964,19 @@
                     document.body.style.overflow = '';
                 }
             });
+        });
+
+        const toggleBtn = document.getElementById('theme-toggle');
+        toggleBtn.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            if (currentTheme === 'light') {
+                document.documentElement.removeAttribute('data-theme');
+                toggleBtn.textContent = 'Light Mode';
+            } else {
+                document.documentElement.setAttribute('data-theme', 'light');
+                toggleBtn.textContent = 'Dark Mode';
+            }
+            ScrollTrigger.refresh();
         });
     </script>
 </body>
