@@ -49,7 +49,6 @@
             font-weight: 300;
         }
 
-        /* Stark, High-End Welcome & Tech Stack Section */
         .intro-section {
             max-width: 1200px;
             margin: 0 auto 5rem auto;
@@ -210,7 +209,6 @@
             font-weight: 300;
         }
 
-        /* Mobile Responsive Adjustments */
         @media (max-width: 900px) {
             body { padding: 2rem 1rem; }
             header { margin-bottom: 3rem; }
@@ -352,7 +350,6 @@
     <script>
         gsap.registerPlugin(ScrollTrigger);
 
-        // Sequential Page Entrance Transitions
         gsap.to("#portfolio-header", { opacity: 1, y: 0, duration: 1.2, ease: "power4.out" });
         gsap.to("#portfolio-intro", { opacity: 1, y: 0, duration: 1.2, ease: "power4.out", delay: 0.15 });
         gsap.to("#portfolio-nav", { opacity: 1, y: 0, duration: 1.2, ease: "power4.out", delay: 0.3 });
@@ -393,7 +390,6 @@
 
         filterButtons.forEach(btn => {
             btn.addEventListener('click', () => {
-               
                 filterButtons.forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
 
@@ -428,6 +424,19 @@
                     }
                 });
             });
+        });
+
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                let scrollSpeed = 1; 
+                function autoScroll() {
+                    window.scrollBy(0, scrollSpeed);
+                    if ((window.innerHeight + window.scrollY) < document.body.offsetHeight) {
+                        requestAnimationFrame(autoScroll);
+                    }
+                }
+                autoScroll();
+            }, 2500);
         });
     </script>
 </body>
